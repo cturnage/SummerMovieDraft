@@ -45,6 +45,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    NSLog(@"Made a change to git");
+    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
     //initialize first movie art
