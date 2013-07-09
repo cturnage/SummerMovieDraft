@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="League" representedClassName="League" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="leagueTeam" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Team" inverseName="teamLeague" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Movie" representedClassName="Movie" syncable="YES">
+        <attribute name="budget" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wk1Gross" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wk2Gross" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wk3Gross" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wk4Gross" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="moviePercentage" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Percentage" inverseName="percentageMovie" inverseEntity="Percentage" syncable="YES"/>
+        <relationship name="movieTeam" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teamMovie" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Percentage" representedClassName="Percentage" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="percentageMovie" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="moviePercentage" inverseEntity="Movie" syncable="YES"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES">
+        <attribute name="movieCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamBudget" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="teamLeague" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="League" inverseName="leagueTeam" inverseEntity="League" syncable="YES"/>
+        <relationship name="teamMovie" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Movie" inverseName="movieTeam" inverseEntity="Movie" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="League" positionX="-416" positionY="-126" width="128" height="90"/>
+        <element name="Movie" positionX="36" positionY="-126" width="128" height="195"/>
+        <element name="Percentage" positionX="358" positionY="201" width="128" height="73"/>
+        <element name="Team" positionX="-171" positionY="-126" width="128" height="120"/>
+    </elements>
+</model>
